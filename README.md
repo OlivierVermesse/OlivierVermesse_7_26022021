@@ -1,15 +1,10 @@
 # INFORMATION : la version du projet 7 est celle du 25 aout  2021
-<!-- ## Frontend
+## Mysql
+Importez la structure de la base donnée ``groupomania_P7_tables.sql`` dans MySQL. 
+
+## Frontend
 1. Installer les dépendances du frontend avec la commande : NPM install
-2. Installer node-sass à part
-
-Le projet a été généré avec Angular version 7.0.2. Pour vérifier votre version utiliser "angular -v"
-
-Une fois, les étapes précédentes réalisées, POUR EXECUTER LE FRONTEND, VOUS DEVEZ :
-- Ouvrir un terminal depuis le dossier "frontend"
-- puis executer : ng serve
-	
-Lorsque le serveur est executé, aller dans votre navigateur et lancer l'adresse: http://localhost:4200  -->
+2. 
 
 ## Backend
 1. Exécuter "npm install" pour installer les dépendances du backend
@@ -20,5 +15,8 @@ Lorsque le serveur est executé, aller dans votre navigateur et lancer l'adresse
 POUR EXECUTER LE BACKEND, VOUS DEVEZ :
 - Ouvrir un terminal depuis le dossier "backend"
 - puis executer : nodemon server
+vous devez avoir le message ci-dessous dans la console :
+    "le serveur est utilisé sur port 3000
+     Connexion à la base de donnée groupomania_P7 en cours"
 	
  INFORMATION : L'application va se recharger automatiquement grace à "nodemon server" au moment de la sauvegarde de votre fichier modifié. 
