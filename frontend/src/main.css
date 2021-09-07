@@ -1,0 +1,17 @@
+.BoutonFondRouge {
+    background-color: #a74d4d;
+}
+
+.BoutonFondVert {
+    background-color: #1d611a;
+}
+
+.invalidBox {
+    background: #FF0101;
+    color: white;   
+    font-weight: bold;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px black, -2px 2px black ;
+};

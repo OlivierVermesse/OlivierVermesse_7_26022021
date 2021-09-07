@@ -4,13 +4,19 @@ Importez la structure de la base donnée ``groupomania_P7_tables.sql`` dans MySQ
 
 ## Frontend
 1. Installer les dépendances du frontend avec la commande : NPM install
-2. 
+2. Exécuter le frontend avec la commande : npm run serve
+vous devez avoir le message ci-dessous dans la console :
+    "App running at :
+    - local: http://localhost:8080/
+    - network: http://xxx.xxx.x.xx:8080/"
+
+    cliquer sur le lien "local" pour afin le page d'accueil du frontend
 
 ## Backend
 1. Exécuter "npm install" pour installer les dépendances du backend
 (la version de nodejs doit être en version "v14.17.x" pour vérifier votre version utiliser "node -v") 
 
-2. Paramétrer le ficier .ENV avec vos données personnelles
+2. Paramétrer le fichier .ENV avec vos données personnelles
 
 POUR EXECUTER LE BACKEND, VOUS DEVEZ :
 - Ouvrir un terminal depuis le dossier "backend"
