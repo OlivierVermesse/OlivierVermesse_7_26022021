@@ -1,5 +1,3 @@
-<!-- fichier central de l'qpplication Vue.-->
-
 <template>
     <div id="app">
       <Navi></Navi>

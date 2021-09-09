@@ -14,4 +14,12 @@
     text-align: center;
     border-radius: 5px;
     box-shadow: 2px 2px black, -2px 2px black ;
-};
+}
+
+.badgeList {
+    width: 100%;
+}
+
+.table{
+    font-size: 20px;
+}

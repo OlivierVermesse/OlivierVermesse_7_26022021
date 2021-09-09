@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             defaultValue: "http://localhost:3000/images/profiles/Default/defaultUser.png"
         },
+        
     }, 
     {
         sequelize,

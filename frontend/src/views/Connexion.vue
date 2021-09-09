@@ -54,7 +54,7 @@
             font-weight-bold
           "
         >
-          SE CONNECTER
+          Se connecter
         </button>
       </form>
     </section>

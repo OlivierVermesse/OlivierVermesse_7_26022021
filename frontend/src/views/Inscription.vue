@@ -4,7 +4,7 @@
       <form @submit.prevent="sendForm(event)">
         <p class="text-center m-2">
           <img
-            src="../assets/enroll.svg"
+            src="../assets/registration.png"
             alt="enrollement"
             style="width: 50px"
           />
