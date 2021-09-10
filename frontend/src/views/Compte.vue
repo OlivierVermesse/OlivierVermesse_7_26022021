@@ -17,7 +17,7 @@
                                 <div class="btn-info rounded p-3" style="cursor:default"><button class="rounded p-2" style="cursor:default"><span class="m-3 font-weight-bold">ATTENTION !!!<br>si vous supprimez votre compte, l'ensemble de vos messages et images seront supprimés.<br>Cette suppression sera irréversible.</span></button></div>
                             </div>
                             <div class="card-body mx-auto">
-                                <div class="btn-danger rounded p-3" style="cursor:default"><button @click="deleteMyAccount(id)" class="rounded p-2 bg-light"><span class="m-3 font-weight-bold">SUPPRIMER VOTRE COMPTE</span><img src="../assets/deleteUser.jpg" alt="deleteUser" style="width:50px"></button></div>
+                                <div class="btn-danger rounded p-3" style="cursor:default"><button @click="deleteMyAccount(id)" class="rounded p-2 bg-light"><span class="m-3 font-weight-bold">SUPPRIMER VOTRE COMPTE</span><img src="../assets/delete.jpg" alt="deleteUser" style="width:50px"></button></div>
                             </div>
                         </div> 
                     </div>  

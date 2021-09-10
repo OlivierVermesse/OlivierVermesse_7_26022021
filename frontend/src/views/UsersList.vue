@@ -57,7 +57,7 @@
                                 </td>
                                 <td>
                                     <span class="badge p-2 badgeList" v-for="i in users" :key="i">   
-                                        <button class="rounded bg-white border border-white" @click="deleteOneUser( i.id, isAdmin )"> <img src="../assets/deleteUser.jpg" alt="deleteUser" style="width:25px"> </button>
+                                        <button class="rounded bg-white border border-white" @click="deleteOneUser( i.id, isAdmin )"> <img src="../assets/delete.jpg" alt="deleteUser" style="width:25px"> </button>
                                     </span>
                                 </td>
                             </tr>

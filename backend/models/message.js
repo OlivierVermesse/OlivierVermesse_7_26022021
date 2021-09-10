@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         message: {
             type: DataTypes.TEXT
         },
-        picture: {
+        messageUrl: {
             type: DataTypes.STRING
         },
         is_moderated: {

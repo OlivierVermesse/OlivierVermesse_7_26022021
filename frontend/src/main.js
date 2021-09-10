@@ -1,5 +1,3 @@
-// Fichier pivot qui fait le lien entre vue, modèles et composants.
-
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
