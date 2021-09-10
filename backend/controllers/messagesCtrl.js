@@ -1,6 +1,7 @@
 const db = require("../models")
 const Message   = db.messages
 const User      = db.users
+const fs = require('fs');
 
 exports.createMessage = (req, res, next) => {
     let imagePost = "";
@@ -43,5 +44,17 @@ exports.findAllMessages = (req, res, next) => {
         res.status(200).json({ list })
     })
     .catch(error => res.status(400).json({ error }))
+}
+
+exports.deleteMessage = (req, res, next) => {
+    if(req.query.messageUid == req.query.uid || req.query.uid == 1) {
+        Message.destroy({ where: { id: req.query.messageId }})
+        .then((res) => {
+                res.status(200).json({ message: "Le message a été supprimé" })
+        })
+        .catch(error => res.status(400).json({ error }))
+    } else {
+        res.status(401).json({message : " Non autorisé "})
+    }
 }
 

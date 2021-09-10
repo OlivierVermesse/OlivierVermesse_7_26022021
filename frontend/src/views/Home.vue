@@ -120,6 +120,11 @@
                 style="width: 250px"
               />
             </div>
+            <div class="row justify-content-around">
+                            <div v-if="isAdmin || message.UserId == id">
+                                <button @click="deleteMessage(message.id, message.UserId, id)" class="border-0"> <img  src="../assets/delete.jpg" alt="delete" style="width:25px"> </button>
+                            </div>
+                        </div>  
           </div>
         </sub>
       </section>
@@ -189,6 +194,32 @@ export default {
     localClear() {
       localStorage.clear();
       router.push({ path: "/" });
+    },
+    deleteMessage(a, b, c) {
+      console.log(typeof a, typeof b, typeof c);
+      let confirmMessageDeletion = confirm(
+        "Confirmez-vous la suppression de ce message ?"
+      );
+      if (confirmMessageDeletion == true) {
+        axios
+          .delete("http://localhost:3000/api/messages/", {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+            params: {
+              messageId: a,
+              messageUid: b,
+              uid: c,
+            },
+          })
+          .then((res) => console.log(res))
+          .catch((error) => {
+            location.reload();
+            console.log(error);
+          });
+      } else {
+        return;
+      }
     },
   },
 };
