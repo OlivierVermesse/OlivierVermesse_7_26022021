@@ -16,6 +16,9 @@
                                 <router-link v-if="isAdmin" to='/Admin'><button type="button" class=" btn btn-danger mx-auto rounded p-2 buttonsPanel">Administration <button class=" rounded p-1 m-1 "><img src="../assets/admin.jpg" alt="admin" style="width:25px"> accéder</button></button></router-link> 
                                 <router-link v-else to='/Compte'><button type="button" class=" btn btn-secondary mx-auto rounded p-2 buttonsPanel">Suppression de compte</button></router-link> 
                             </div>
+                            <div id="publicationButton" class=" card-body text-center">
+                            <router-link to='/CreatePost' ><button type="button" class="btn btn-dark mx-auto p-2 rounded buttonsPanel">Publication d'un message</button></router-link>
+                        </div>
                         </div>
                     </div>                  
                 </article>
@@ -48,7 +51,7 @@ export default {
         .then(res => {  
             console.log(res)
             self.id                 = res.data.id;
-            self.nameCurrentUser               = res.data.firstName.charAt(0).toUpperCase() + res.data.firstName.slice(1);
+            self.nameCurrentUser               = res.data.userName.charAt(0).toUpperCase() + res.data.userName.slice(1);
             self.creation           = res.data.createdAt.slice(0,10).split("-").reverse().join(".");
             self.isAdmin            = res.data.isAdmin;
         })

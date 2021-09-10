@@ -17,20 +17,25 @@ const routes = [
         component: () => import("../views/Home")
     },
     {
-        path: "/Compte",
+        path: "/compte",
         name: "Compte",
         component: () => import("../views/Compte"),
     },
     {
-        path: "/Admin",
+        path: "/createpost",
+        name: "CreatePost",
+        component: () => import("../views/CreatePost")
+    },
+    {
+        path: "/admin",
         name: "Admin",
         component: () => import("../views/Admin"),
     },
     {
-        path: "/UsersList",
+        path: "/usersList",
         name: "UsersList",
         component: () => import("../views/UsersList")
-    }
+    },
 ]
 
 const router = createRouter({

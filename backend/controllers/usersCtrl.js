@@ -12,12 +12,18 @@ exports.findOneUser = (req, res, next) => {
     .then(user => {
         userData.id             = user.id
         userData.lastName       = user.lastName
-        userData.firstName       = user.firstName
+        userData.userName       = user.userName
         userData.userName       = user.userName
         userData.email          = user.email
         userData.createdAt      = user.createdAt
         userData.isAdmin        = user.isAdmin
     })
+    .then(() => {
+        Message.count({ where: { userId: req.params.id }})
+        .then(total => { 
+            userData.totalMessages = total
+        })
+    })  
     .then(() => {
         res.status(200).json(userData)
     })
@@ -38,6 +44,7 @@ exports.findAllUsers = (req, res, next) => {
 
 exports.deleteOneUser = (req, res, next) => {
     if(req.query.isAdmin) {
+        Message.destroy({ where: { UserId: req.query.uid }})
         User.destroy({ where: { id: req.query.uid}})
         .then((res) => {
             res.status(200).json({ message: "Le user a été supprimé" })
@@ -49,6 +56,7 @@ exports.deleteOneUser = (req, res, next) => {
 }
 
 exports.deleteMyAccount = (req, res, next) => {
+    Message.destroy({ where: { UserId: req.query.uid }})
     User.destroy({ where: { id: req.params.id }}) 
     .then( () => res.status(200).json({message: "ok"}))
     .catch(error => console.log(error))

@@ -42,7 +42,7 @@
                                 </td>
                                 <td>
                                     <span class="badge p-3 badgeList" v-for="i in users" :key="i">   
-                                         {{ i.firstName.charAt(0).toUpperCase() + i.firstName.slice(1) }} 
+                                         {{ i.userName.charAt(0).toUpperCase() + i.userName.slice(1) }} 
                                     </span>
                                 </td>
                                 <td>
@@ -95,7 +95,7 @@ export default {
         .then(res => {  
             self.creation           = res.data.createdAt.slice(0,10).split("-").reverse().join(".");
             self.isAdmin            = res.data.isAdmin;
-            self.nameCurrentUser    = res.data.firstName.charAt(0).toUpperCase() + res.data.firstName.slice(1);       
+            self.nameCurrentUser    = res.data.userName.charAt(0).toUpperCase() + res.data.userName.slice(1);       
         })
         .catch((error)=> { console.log(error) 
         });

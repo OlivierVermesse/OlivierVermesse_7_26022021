@@ -31,17 +31,17 @@
           >
         </div>
         <div class="form-group">
-          <label for="inputFirstName">Prénom:</label>
+          <label for="inputUserName">Prénom:</label>
           <input
             v-on:keydown="invalid = false"
-            v-model="inputFirstName"
+            v-model="inputUserName"
             type="text"
             class="form-control"
-            id="inputFirstName"
+            id="inputUserName"
             aria-describedby="userFirstHelp"
             placeholder="Entrez votre prénom"
           />
-          <small id="firstNameHelp" class="form-text text-muted"
+          <small id="UserNameHelp" class="form-text text-muted"
             >De 3 à 30 caractères</small
           >
         </div>
@@ -124,7 +124,7 @@ export default {
   data() {
     return {
       inputLastName: "",
-      inputFirstName: "",
+      inputUserName: "",
       inputEmail: "",
       inputPassword: "",
       invalid: false,
@@ -134,7 +134,7 @@ export default {
     sendForm() {
       if (
         !this.inputLastName ||
-        !this.inputFirstName ||
+        !this.inputUserName ||
         !this.inputEmail ||
         !this.inputPassword
       ) {
@@ -146,14 +146,14 @@ export default {
 
       if (
         globalRegex.test(this.inputLastName) &&
-        globalRegex.test(this.inputFirstName) &&
+        globalRegex.test(this.inputUserName) &&
         mailRegex.test(this.inputEmail) &&
         pwdRegex.test(this.inputPassword)
       ) {
         axios
           .post("http://localhost:3000/api/auth/signup", {
             lastName: this.inputLastName,
-            firstName: this.inputFirstName,
+            userName: this.inputUserName,
             email: this.inputEmail,
             password: this.inputPassword,
           })

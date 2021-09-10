@@ -1,5 +1,3 @@
-// module de connexion à la base de données
-
 require("dotenv").config();
 const Sequelize = require("sequelize");
 

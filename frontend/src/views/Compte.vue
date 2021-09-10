@@ -54,7 +54,7 @@ export default {
         .then(res => {  
             self.creation           = res.data.createdAt.slice(0,10).split("-").reverse().join(".");
             self.isAdmin            = res.data.isAdmin;
-            self.fullNameCurrentUser    = res.data.firstName.charAt(0).toUpperCase() + res.data.firstName.slice(1) + " " + res.data.lastName.charAt(0).toUpperCase() + res.data.lastName.slice(1);
+            self.fullNameCurrentUser    = res.data.userName.charAt(0).toUpperCase() + res.data.userName.slice(1) + " " + res.data.lastName.charAt(0).toUpperCase() + res.data.lastName.slice(1);
             self.id                 = res.data.id     
         })
         .catch((error)=> { console.log(error) 
