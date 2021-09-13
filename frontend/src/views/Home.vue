@@ -65,7 +65,7 @@
             </div>
           </div>
         </article>
-        <sub class="col-12 col-md-8">
+        <div class="col-12 col-md-8" style="height: 200px">
           <div class="col-12">
             <h1
               v-if="this.messages.length !== 0"
@@ -87,8 +87,8 @@
             :key="message.id"
             class="card bg-light my-3"
           >
-            <div class="card-header bg-light m-0 p-1">
-              <div class="badge" style="width: 100px">
+            <div class="card-header bg-light m-0 p-1" style="font-size: 12px">
+              <div class="badge">
                 Référence # {{ message.id }} postée par
                 {{
                   message.userName.charAt(0).toUpperCase() +
@@ -106,27 +106,41 @@
                 }}
               </div>
             </div>
-            <div class="px-5 py-3">
-              <p v-if="isAdmin || message.UserId == id" class="ml-2">
-                {{ message.message }}
-              </p>
-            </div>
-            <div class="btn">
-              <img
-                :src="message.messageUrl"
-                v-if="message.messageUrl !== ''"
-                class="border messImage"
-                alt="image utilisateur"
-                style="width: 250px"
-              />
+            <div class="col-12 d-flex">
+              <div
+                class="col-8 pr-2 py-auto my-auto"
+                style="font-size: 12px"
+              >
+                <p v-if="isAdmin || message.UserId == id">
+                  {{ message.message }}
+                </p>
+              </div>
+              <div class="col-4 btn my-auto">
+                <img
+                  :src="message.messageUrl"
+                  v-if="message.messageUrl !== ''"
+                  class="border messImage"
+                  alt="image utilisateur"
+                  style="width: 100px"
+                />
+              </div>
             </div>
             <div class="row justify-content-around">
-                            <div v-if="isAdmin || message.UserId == id">
-                                <button @click="deleteMessage(message.id, message.UserId, id)" class="border-0"> <img  src="../assets/delete.jpg" alt="delete" style="width:25px"> </button>
-                            </div>
-                        </div>  
+              <div v-if="isAdmin || message.UserId == id">
+                <button
+                  @click="deleteMessage(message.id, message.UserId, id)"
+                  class="border-0"
+                >
+                  <img
+                    src="../assets/delete.jpg"
+                    alt="delete"
+                    style="width: 25px"
+                  />
+                </button>
+              </div>
+            </div>
           </div>
-        </sub>
+        </div>
       </section>
     </div>
   </main>

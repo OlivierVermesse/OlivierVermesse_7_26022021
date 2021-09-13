@@ -82,7 +82,7 @@
             text-white
             p-2
             w-100
-            border-0
+            border-2
             rounded
             shadow
             font-weight-bold
@@ -93,20 +93,9 @@
       </form>
     </section>
 
-    <div class="col-7 mx-auto mt-4">
+    <div class="col-12 col-md-8 mx-auto mt-4">
       <router-link to="/#"
-        ><button
-          class="
-            BoutonFondVert
-            text-white
-            p-2
-            w-100
-            border-0
-            rounded
-            shadow
-            font-weight-bold
-          "
-        >
+        ><button class="p-2 w-100 border-2 rounded shadow font-weight-bold">
           Ecran de connexion
         </button></router-link
       >

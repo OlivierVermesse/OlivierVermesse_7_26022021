@@ -47,7 +47,7 @@
             text-white
             p-2
             w-100
-            border-0
+            border-2
             rounded
             shadow
             BoutonFondVert
@@ -59,17 +59,16 @@
       </form>
     </section>
 
-    <div class="col-7 mx-auto mt-3">
+    <div class="col-12 col-md-8 mx-auto mt-3">
       <router-link to="/inscription"
         ><button
           class="
-            text-white
+          
             p-2
             w-100
-            border-0
+            border-2
             rounded
             shadow
-            BoutonFondRouge
             font-weight-bold
           "
         >
