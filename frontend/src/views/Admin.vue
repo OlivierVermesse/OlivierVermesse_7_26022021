@@ -25,7 +25,6 @@
                 <article class="col col-md-8 mt-5">
                     <h2 class="text-center m-5 ">Sélectionner un menu</h2>
                     <div class="row justify-content-around">
-                        <!-- <button @click="toCommentsList()" class="btn btn-warning rounded shadow font-weight-bold p-5 m-2">MESSAGES/COMMENTS</button> -->
                         <button @click="UsersList()" class="btn btn-info rounded shadow font-weight-bold p-5 m-2" >Users</button>
                     </div>
                 </article>
@@ -70,14 +69,6 @@ export default {
             localStorage.clear();
             router.push({ path : "/" });
         },
-        // seeOnePost(m) {
-        //     console.log(m);
-        //     localStorage.setItem('MessageId', m);
-        //     router.replace("http://localhost:8080/api/comment")
-        // },
-        // toCommentsList() {
-        //     router.replace("http://localhost:8080/api/CommentsList")
-        // },
         UsersList() {
             router.replace("http://localhost:8080/api/UsersList")
         }

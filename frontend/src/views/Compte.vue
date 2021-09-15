@@ -72,7 +72,6 @@ export default {
                 axios.delete("http://localhost:3000/api/users/" + id, {headers: { "Authorization": "Bearer " + localStorage.getItem("token") },})
                 .then((res)=> {
                     console.log(res);
-                    alert('Cliquez sur ok et l\'utilisateur sera supprimé');
                     router.replace("http://localhost:8080/api/")
                 })
                 .catch((error) => { 

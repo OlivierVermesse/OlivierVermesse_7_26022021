@@ -6,7 +6,7 @@ const MIME_TYPES = { //création d'une bibliothèque de type de fichier avec cor
     "image/png": "png"
 };
 
-const storage = multer.diskStorage ({ //permet de definir l'emplacement destination du fichier
+const storage = multer.diskStorage({ //permet de definir l'emplacement destination du fichier
     destination: (req, file, callback) => { //section où on dit où mettre
         callback(null, "images") //null dit pas d'erreur + nom du dossier destination
     },
@@ -17,4 +17,4 @@ const storage = multer.diskStorage ({ //permet de definir l'emplacement destinat
     }
 });
 
-module.exports = multer( { storage: storage }).single("image") //export du middleware avec recup de la constante + single pour dire 1 fichier en upload uniquement + "image" pour dire uniquement des images
+module.exports = multer({ storage: storage }).single("image") //export du middleware avec recup de la constante + single pour dire 1 fichier en upload uniquement + "image" pour dire uniquement des images

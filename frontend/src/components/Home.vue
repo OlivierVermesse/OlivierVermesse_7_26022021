@@ -1,8 +1,8 @@
 <template>
     <header class="container">
-        <div class="row justify-content-center">
-            <nav class="col-1 m-auto">
-               <router-link to="/Home">  <img src="../assets/home.png" alt="logo-home" style="width:200%"/></router-link>
+        <div class="row ">
+            <nav class="col-12 text-center">
+               <router-link to="/Home">  <img src="../assets/home.png"  alt="logo-home" style="width:30%"/></router-link>
             </nav>
         </div>
     </header>

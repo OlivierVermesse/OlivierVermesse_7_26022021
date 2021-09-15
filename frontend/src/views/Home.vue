@@ -106,26 +106,35 @@
                 }}
               </div>
             </div>
-            <div class="col-12 d-flex">
-              <div
-                class="col-8 pr-2 py-auto my-auto"
-                style="font-size: 12px"
-              >
-                <p v-if="isAdmin || message.UserId == id">
-                  {{ message.message }}
-                </p>
+            <div class="col-12 d-flex" @click="commentPage(message.id)">
+              <div class="col-8 pr-2 py-auto my-auto truncated">
+                <span>{{ message.message }}</span>
               </div>
               <div class="col-4 btn my-auto">
                 <img
                   :src="message.messageUrl"
                   v-if="message.messageUrl !== ''"
-                  class="border messImage"
+                  class="border messImage rounded"
                   alt="image utilisateur"
-                  style="width: 100px"
+                  style="width: 8rem"
                 />
               </div>
             </div>
             <div class="row justify-content-around">
+              <button @click="commentPage(message.id)" class="border-0">
+                voir plus...<img
+                  src="../assets/oeil.png"
+                  alt="oeil"
+                  style="width: 25px"
+                />
+              </button>
+              <button @click="createComment(message.id)" class="border-0">
+                <img
+                  src="../assets/comment.png"
+                  alt="comment"
+                  style="width: 25px"
+                />
+              </button>
               <div v-if="isAdmin || message.UserId == id">
                 <button
                   @click="deleteMessage(message.id, message.UserId, id)"
@@ -160,6 +169,15 @@ export default {
       id: "",
       nameCurrentUser: "",
       creation: "",
+    };
+  },
+  dataComment() {
+    return {
+      isAdmin: false,
+      currentUserId: "",
+      newComment: "",
+      comments: [],
+      isInvalid: false,
     };
   },
   created: function () {
@@ -208,6 +226,57 @@ export default {
     localClear() {
       localStorage.clear();
       router.push({ path: "/" });
+    },
+    callName() {
+      let name = localStorage.getItem("userName");
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    },
+    callNumber() {
+      return localStorage.getItem("MessageId");
+    },
+    sendComment() {
+      if (
+        !this.newComment ||
+        !localStorage.getItem("userId") ||
+        !localStorage.getItem("MessageId" || this.newComment.lemgth > 1500)
+      ) {
+        this.isInvalid = true;
+      } else {
+        let UserId = localStorage.getItem("userId");
+        let comment = this.newComment.toString();
+        let MessageId = localStorage.getItem("MessageId");
+
+        axios
+          .post(
+            "http://localhost:3000/api/comments/",
+            { UserId, comment, MessageId },
+            {
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+            }
+          )
+          .then(() => {
+            this.UserId = "";
+            this.newMessage = "";
+
+            alert("Commentaire Posté!");
+            router.push({ path: "Commentpost" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+    commentPage(m) {
+      console.log(m);
+      localStorage.setItem("MessageId", m);
+      router.push({ path: "/Comment" });
+    },
+    createComment(m) {
+      console.log(m);
+      localStorage.setItem("MessageId", m);
+      router.push({ path: "/createComment" });
     },
     deleteMessage(a, b, c) {
       console.log(typeof a, typeof b, typeof c);

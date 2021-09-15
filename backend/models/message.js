@@ -11,11 +11,6 @@ module.exports = (sequelize, DataTypes) => {
         messageUrl: {
             type: DataTypes.STRING
         },
-        is_moderated: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        }
     },
         {
             sequelize,

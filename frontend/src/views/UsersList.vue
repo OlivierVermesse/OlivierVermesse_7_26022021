@@ -127,7 +127,6 @@ export default {
                 })
                 .then((res)=> {
                     console.log(res)
-                    alert('Cliquez sur ok pour valider la suppression de l\'utilisateur');
                     router.replace("http://localhost:8080/api/UsersList")
                 })
                 .catch((error) => { 

@@ -1,13 +1,12 @@
   <template>
   <main class="container">
     <div class="text-center lead" style="font-weight: bold">
-      {{ callName() }}, votre publication doit contenir un message et une photo
+      {{ callName() }}, votre publication doit faire au maximum 1 500 caractères et vous pouvez ajouter une photo
     </div>
     <section class="row card bg-light m-2 p-3">
       <div v-show="isInvalid" class="invalidBox m-2" key="invalid">
         <p>
-          Rappel : Votre message doit contenir un texte et une photo. Votre
-          message doit faire moins de 1 500 caractères.
+          Rappel : Votre message doit faire moins de 1 500 caractères.
         </p>
       </div>
       <form enctype="multipart/form-data">
@@ -25,7 +24,7 @@
             ></textarea>
           </div>
           <div class="col-12 justify-content-center text-center">
-            <img :src="newImage" class="w-50 rounded" />
+            <img :src="newImage" class="w-10 rounded" />
           </div>
           <div class="col-12 justify-content-center">
             <div class="form-group justify-content-center">
@@ -94,7 +93,6 @@ export default {
     },
     send() {
       if (
-        !this.file ||
         !localStorage.getItem("userName") ||
         !this.newMessage ||
         this.newMessage > 1500
