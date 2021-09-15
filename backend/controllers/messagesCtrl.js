@@ -1,6 +1,7 @@
 const db = require("../models")
-const Message = db.messages
 const User = db.users
+const Message = db.messages
+const Comment   = db.comments
 const fs = require('fs');
 
 exports.createMessage = (req, res, next) => {
@@ -72,6 +73,7 @@ exports.findAllMessages = (req, res, next) => {
 
 exports.deleteMessage = (req, res, next) => {
     if (req.query.messageUid == req.query.uid || req.query.uid == 1) {
+        Comment.destroy({ where: { MessageId: req.query.messageId }})
         Message.destroy({ where: { id: req.query.messageId } })
             .then((res) => {
                 res.status(200).json({ message: "Le message a été supprimé" })

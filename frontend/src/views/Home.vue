@@ -281,7 +281,7 @@ export default {
     deleteMessage(a, b, c) {
       console.log(typeof a, typeof b, typeof c);
       let confirmMessageDeletion = confirm(
-        "Confirmez-vous la suppression de ce message ?"
+        "voulez-vous vraiment supprimer ce message ainsi que la photo et commentaires si il y a ?"
       );
       if (confirmMessageDeletion == true) {
         axios

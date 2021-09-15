@@ -42,6 +42,7 @@ exports.findAllUsers = (req, res, next) => {
 
 exports.deleteOneUser = (req, res, next) => {
     if (req.query.isAdmin) {
+        Comment.destroy({ where: { UserId: req.query.uid }})
         Message.destroy({ where: { UserId: req.query.uid } })
         User.destroy({ where: { id: req.query.uid } })
             .then((res) => {
@@ -54,7 +55,8 @@ exports.deleteOneUser = (req, res, next) => {
 }
 
 exports.deleteMyAccount = (req, res, next) => {
-    Message.destroy({ where: { UserId: req.query.uid } })
+    Comment.destroy({ where: { UserId: req.query.uid }})
+    Message.destroy({ where: { UserId: req.query.uid }})
     User.destroy({ where: { id: req.params.id } })
         .then(() => res.status(200).json({ message: "ok" }))
         .catch(error => console.log(error))

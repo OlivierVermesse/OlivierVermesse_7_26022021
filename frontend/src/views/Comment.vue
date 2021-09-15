@@ -267,9 +267,9 @@ export default {
       localStorage.clear();
       router.push({ path: "/" });
     },
-    deleteMessage(messageId, messageUserId, currentUserId) {
+    deleteMessage(a, b, c) {
       let confirmMessageDeletion = confirm(
-        "voulez-vous vraiment supprimer ce message ?"
+        "voulez-vous vraiment supprimer ce message ainsi que la photo et commentaires si il y a ?"
       );
       if (confirmMessageDeletion == true) {
         axios
@@ -278,13 +278,14 @@ export default {
               Authorization: "Bearer " + localStorage.getItem("token"),
             },
             params: {
-              messageId: messageId,
-              messageUid: messageUserId,
-              uid: currentUserId,
+              messageId: a,
+              messageUid: b,
+              uid: c,
             },
           })
           .then((res) => console.log(res))
         router.push({ path: "/Home" });
+        location.reload();
       } else {
         return;
       }

@@ -28,6 +28,7 @@
                     </h2>
                     <table class="table table-striped">
                             <tr>
+                                <th class="py-3 text-center">Id</th>
                                 <th class="py-3 text-center">Nom</th>
                                 <th class="py-3 text-center">Prénom</th>
                                 <th class="py-3 text-center">Email</th>
@@ -35,6 +36,11 @@
                                 <th class="py-3 text-center">Supprimer</th>
                             </tr>
                             <tr>
+                                <td>
+                                    <span class="badge p-3 badgeList" v-for="i in users" :key="i">   
+                                         {{ i.id }}
+                                    </span>
+                                </td>
                                 <td>
                                     <span class="badge p-3 badgeList" v-for="i in users" :key="i">   
                                          {{ i.lastName.charAt(0).toUpperCase() + i.lastName.slice(1) }}  
@@ -114,7 +120,7 @@ export default {
         deleteOneUser(uid, isAdmin) {
         console.log(uid, isAdmin)
         
-        let confirmUserDeletion = confirm("voulez-vous vraiment supprimer cet utilisateur ?");
+        let confirmUserDeletion = confirm("voulez-vous vraiment supprimer cet utilisateur - Cela supprimera les messages, images et commmentaires de cet utilisateur ?");
             if (confirmUserDeletion == true) {
                 axios.delete("http://localhost:3000/api/users/", {
                     headers: { 
