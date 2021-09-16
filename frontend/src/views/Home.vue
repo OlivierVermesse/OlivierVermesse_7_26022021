@@ -62,14 +62,14 @@
           </div>
         </article>
         <div class="col-8">
-          <div class="row card bg-light mx-0 px-3">
+          <div class="row card mx-0 px-3">
             <div v-show="isInvalid" class="invalidBox m-2" key="invalid">
               Rappel : Votre message doit faire moins de 1 500 caractères.
             </div>
             <form enctype="multipart/form-data">
               <div
-                class="row d-flex justify-content-around pt-1"
-                style="font-size: 12px"
+                class="row d-flex justify-content-around font-weight-bold pt-1"
+                
               >
                 <div class="col-7 form-group m-0 p-0">
                   <label for="newMessage"
@@ -77,7 +77,7 @@
                   >
                   <textarea
                     v-on:keydown="isInvalid = false"
-                    class="form-control"
+                    class="form-control bg-light "
                     v-model="newMessage"
                     id="newMessage"
                     name="message"
@@ -107,7 +107,7 @@
                       class="btn btn-danger btn-block m-1 p-1"
                       style="font-size: 12px"
                       @click="refresh"
-                      >Annuler/Retour</a
+                      >Annuler</a
                     >
                   </div>
                   <div
@@ -191,7 +191,7 @@
                   style="width: 25px"
                 />
               </button>
-              <button @click="createComment(message.id)" class="border-0">
+              <button @click="commentPage(message.id)" class="border-0">
                 <img
                   src="../assets/comment.png"
                   alt="comment"
