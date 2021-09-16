@@ -2,7 +2,7 @@
   <main class="container">
     <div class="col-12">
       <section id="filPrincipal" class="row">
-        <article class="col-12 col-md-4">
+        <article class="col-4">
           <div
             class="card bg-light my-3 class=center-block"
             style="float: none"
@@ -23,53 +23,116 @@
                     style="width: 50px"
                   />
                 </button>
+                <div class="card-body">
+                  <div id="deleteUserButton" class="text-center">
+                    <router-link v-if="isAdmin" to="/Admin"
+                      ><button
+                        type="button"
+                        class="btn btn-danger mx-auto rounded p-2 buttonsPanel"
+                      >
+                        Administration
+                        <button class="rounded p-1 m-1">
+                          <img
+                            src="../assets/admin.jpg"
+                            alt="admin"
+                            style="width: 25px"
+                          />
+                          accéder
+                        </button>
+                      </button></router-link
+                    >
+                    <router-link v-else to="/Compte"
+                      ><button
+                        type="button"
+                        class="
+                          btn btn-secondary
+                          mx-auto
+                          rounded
+                          p-2
+                          buttonsPanel
+                        "
+                      >
+                        Suppression de compte
+                      </button></router-link
+                    >
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="card-body">
-              <div id="deleteUserButton" class="text-center">
-                <router-link v-if="isAdmin" to="/Admin"
-                  ><button
-                    type="button"
-                    class="btn btn-danger mx-auto rounded p-2 buttonsPanel"
-                  >
-                    Administration
-                    <button class="rounded p-1 m-1">
-                      <img
-                        src="../assets/admin.jpg"
-                        alt="admin"
-                        style="width: 25px"
-                      />
-                      accéder
-                    </button>
-                  </button></router-link
-                >
-                <router-link v-else to="/Compte"
-                  ><button
-                    type="button"
-                    class="btn btn-secondary mx-auto rounded p-2 buttonsPanel"
-                  >
-                    Suppression de compte
-                  </button></router-link
-                >
-              </div>
-            </div>
-            <div id="publicationButton" class="card-body text-center">
-              <router-link to="/CreatePost"
-                ><button
-                  type="button"
-                  class="btn btn-dark mx-auto p-2 rounded buttonsPanel"
-                >
-                  Publication d'un message
-                </button></router-link
-              >
             </div>
           </div>
         </article>
-        <div class="col-12 col-md-8" style="height: 200px">
+        <div class="col-8">
+          <div class="row card bg-light mx-0 px-3">
+            <div v-show="isInvalid" class="invalidBox m-2" key="invalid">
+              Rappel : Votre message doit faire moins de 1 500 caractères.
+            </div>
+            <form enctype="multipart/form-data">
+              <div
+                class="row d-flex justify-content-around pt-1"
+                style="font-size: 12px"
+              >
+                <div class="col-7 form-group m-0 p-0">
+                  <label for="newMessage"
+                    >{{ callName() }}, saississez votre message :</label
+                  >
+                  <textarea
+                    v-on:keydown="isInvalid = false"
+                    class="form-control"
+                    v-model="newMessage"
+                    id="newMessage"
+                    name="message"
+                    rows="4"
+                    placeholder="votre message ici (max 1 500 caractères)"
+                    style="font-size: 12px"
+                  ></textarea>
+                </div>
+                <div class="col-4 my-auto">
+                  <div class="col-12 text-center my-auto">
+                    <img :src="newImage" class="rounded" style="width: 7rem" />
+                  </div>
+                </div>
+                <div class="col-12 mx-auto d-flex align-items-center">
+                  <div class="col-3">
+                    <button
+                      type="submit"
+                      @click.prevent="send()"
+                      class="btn btn-dark btn-block m-1 p-1"
+                      style="font-size: 12px"
+                    >
+                      Publier
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <a
+                      class="btn btn-danger btn-block m-1 p-1"
+                      style="font-size: 12px"
+                      @click="refresh"
+                      >Annuler/Retour</a
+                    >
+                  </div>
+                  <div
+                    class="col-6 justify-content-center"
+                    style="font-size: 12px"
+                  >
+                    <input
+                      @change="selectFile()"
+                      type="file"
+                      ref="file"
+                      name="image"
+                      class="form-control-file"
+                      id="File"
+                      accept=".jpg, .jpeg, .png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
           <div class="col-12">
             <h1
               v-if="this.messages.length !== 0"
               class="col-12 my-2 btn btn-block btn-info font-weight-bold"
+              @click="refresh"
               style="background-color: #138400; cursor: default"
             >
               Dernières Publications
@@ -120,9 +183,9 @@
                 />
               </div>
             </div>
-            <div class="row justify-content-around">
-              <button @click="commentPage(message.id)" class="border-0">
-                voir plus...<img
+            <div class="row justify-content-around " style="font-size: 12px">
+              <button @click="commentPage(message.id)" class="font-weight-bold border-0">
+                voir la totalité du message ou les commentaires...<img
                   src="../assets/oeil.png"
                   alt="oeil"
                   style="width: 25px"
@@ -169,6 +232,11 @@ export default {
       id: "",
       nameCurrentUser: "",
       creation: "",
+      newImage: "",
+      currentUserId: "",
+      newMessage: "",
+      file: null,
+      isInvalid: false,
     };
   },
   dataComment() {
@@ -223,6 +291,9 @@ export default {
       });
   },
   methods: {
+    refresh() {
+      location.reload();
+    },
     localClear() {
       localStorage.clear();
       router.push({ path: "/" });
@@ -233,6 +304,40 @@ export default {
     },
     callNumber() {
       return localStorage.getItem("MessageId");
+    },
+    selectFile() {
+      this.file = this.$refs.file.files[0];
+      this.newImage = URL.createObjectURL(this.file);
+    },
+    send() {
+      if (
+        !localStorage.getItem("userName") ||
+        !this.newMessage ||
+        this.newMessage > 1500
+      ) {
+        this.isInvalid = true;
+      } else {
+        const formData = new FormData();
+        formData.append("image", this.file);
+        formData.append("UserId", localStorage.getItem("userId"));
+        formData.append("message", this.newMessage.toString());
+        axios
+          .post("http://localhost:3000/api/messages/", formData, {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          })
+          .then(() => {
+            this.UserId = "";
+            this.newMessage = "";
+            this.file = null;
+            alert("publication postée !");
+            location.reload();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
     sendComment() {
       if (
@@ -307,3 +412,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.delete-btn {
+  padding: 0.5em 1em;
+  background-color: #eccfc9;
+  color: #c5391a;
+  border: 2px solid #ea3f1b;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+</style>

@@ -22,11 +22,6 @@ const routes = [
         component: () => import("../views/Compte"),
     },
     {
-        path: "/createpost",
-        name: "CreatePost",
-        component: () => import("../views/CreatePost")
-    },
-    {
         path: "/CreateComment",
         name: "CreateComment",
         component: () => import("../views/CreateComment"),

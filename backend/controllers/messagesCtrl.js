@@ -73,6 +73,10 @@ exports.findAllMessages = (req, res, next) => {
 
 exports.deleteMessage = (req, res, next) => {
     if (req.query.messageUid == req.query.uid || req.query.uid == 1) {
+
+        // const filename = Message.messageUrl.split("/images/")[1];
+        // fs.unlink(`images/${filename}`);
+
         Comment.destroy({ where: { MessageId: req.query.messageId }})
         Message.destroy({ where: { id: req.query.messageId } })
             .then((res) => {
@@ -83,4 +87,3 @@ exports.deleteMessage = (req, res, next) => {
         res.status(401).json({ message: " Non autorisé " })
     }
 }
-
