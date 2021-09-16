@@ -2,14 +2,14 @@
   <main class="container">
     <div class="col-12">
       <section id="filPrincipal" class="row">
-        <article class="col-4">
+        <article class="col-12 col-md-4">
           <div
-            class="card bg-light my-3 class=center-block"
+            class="d-flex flex-column card bg-light my-3 class=center-block"
             style="float: none"
           >
-            <div class="card-header">
+            <div class="card-header col-12">
               <div class="row justify-content-around bg-white">
-                <p class="m-1 text-center">Bienvenue {{ nameCurrentUser }} !</p>
+                <p class="col-12 m-1 text-center">Bienvenue {{ nameCurrentUser }} !</p>
                 <p id="membre" class="text-center">
                   Vous êtes membre depuis le {{ creation }}
                 </p>
@@ -61,7 +61,7 @@
             </div>
           </div>
         </article>
-        <div class="col-8">
+        <div class="col-12 col-md-8">
           <div class="row card mx-0 px-3">
             <div v-show="isInvalid" class="invalidBox m-2" key="invalid">
               Rappel : Votre message doit faire moins de 1 500 caractères.
