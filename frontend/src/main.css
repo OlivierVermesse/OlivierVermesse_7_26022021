@@ -42,6 +42,7 @@
 }
 
 
+
 @media only screen and (max-width: 768px) {
 #newMessage{
     width:100%;
@@ -69,6 +70,10 @@ button{
     font-size: 12px;
 }
 .btnSupp{
+    font-size: 12px;
+}
+.adminTitle
+{
     font-size: 12px;
 }
 }
