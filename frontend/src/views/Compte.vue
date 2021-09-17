@@ -6,7 +6,7 @@
         <div class="card-header col-12">
           <div class="row justify-content-around bg-white">
             <p class="col-12 m-1 text-center">
-              Bienvenue {{ nameCurrentUser }} !
+              Bienvenue {{ fullNameCurrentUser }} !
             </p>
             <p id="membre" class="col-12 m-1 text-center">
               Vous êtes membre depuis le {{ creation }}
