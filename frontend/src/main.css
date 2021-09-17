@@ -40,6 +40,10 @@
 .Upload{
     font-size: 12px;
 }
+.listUser{
+    display: none;
+}
+
 
 
 
@@ -76,5 +80,13 @@ button{
 {
     font-size: 12px;
 }
+.table{
+    display: none;
+}
+.listUser{
+    display: block;
+}
+
+
 }
 
