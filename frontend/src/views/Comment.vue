@@ -1,17 +1,19 @@
 <template>
   <main class="container">
-    <Home class="mb-3"></Home>
+    <Home class="col-8 col-md-12 mb-3"></Home>
     <div class="col-12">
       <div id="filPrincipal" class="row">
-        <div class="col-12 col-md-4">
+        <article class="col-12 col-md-4">
           <div
-            class="card bg-light my-3 class=center-block"
+            class="d-flex flex-column card bg-light my-3 class=center-block"
             style="float: none"
           >
-            <div class="card-header">
+            <div class="card-header col-12">
               <div class="row justify-content-around bg-white">
-                <p class="m-1 text-center">Bienvenue {{ nameCurrentUser }} !</p>
-                <p id="membre" class="text-center">
+                <p class="col-12 m-1 text-center">
+                  Bienvenue {{ nameCurrentUser }} !
+                </p>
+                <p id="membre" class="col-12 m-1 text-center">
                   Vous êtes membre depuis le {{ creation }}
                 </p>
                 <button
@@ -29,7 +31,14 @@
                     <router-link v-if="isAdmin" to="/Admin"
                       ><button
                         type="button"
-                        class="btn btn-danger mx-auto rounded p-2 buttonsPanel"
+                        class="
+                          btn btn-danger
+                          mx-auto
+                          rounded
+                          p-md-2 p-0
+                          buttonsPanel
+                          btnSupp
+                        "
                       >
                         Administration
                         <button class="rounded p-1 m-1">
@@ -49,8 +58,9 @@
                           btn btn-secondary
                           mx-auto
                           rounded
-                          p-2
+                          p-md-2 p-0
                           buttonsPanel
+                          btnSupp
                         "
                       >
                         Suppression de compte
@@ -61,7 +71,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
         <div class="col-12 col-md-8" style="height: 200px">
           <div class="col-12">
             <h1
@@ -73,11 +83,14 @@
             </h1>
           </div>
           <div class="card bg-light my-3">
-            <div class="card-header col-12 d-flex">
-              <div class="col-8 pr-2 py-auto my-auto" style="font-size: 12px">
+            <div class="card-header col-12 d-flex flex-column flex-sm-row">
+              <div
+                class="col-12 col-sm-8 pr-2 py-auto my-auto text-justify"
+                style="font-size: 12px"
+              >
                 {{ message }}
               </div>
-              <div class="col-4 btn my-auto">
+              <div class="col-12 col-sm-4 btn my-auto">
                 <img
                   :src="messageUrl"
                   v-if="messageUrl !== ''"
@@ -104,26 +117,27 @@
               </div>
             </div>
           </div>
-          <div class="row card m-0 mb-3 px-3">
+          <div class="row card col-12 m-0 mb-3 px-0 px-md-2">
             <div v-show="isInvalid" class="invalidBox m-2" key="invalid">
               <p>
                 Rappel : Votre commentaire doit faire moins de 1 500 caractères.
               </p>
             </div>
             <form enctype="multipart/form-data">
-              <div class="d-flex">
-                <div class="row col-10">
+              <div class="d-flex flex-column flex-md-row">
+                <div class="col-12 col-md-9 p-0">
                   <div
                     class="
                       col-12
                       justify-content-center
                       form-group
                       mt-2
+                      mx-0
                       font-weight-bold
                     "
                   >
                     <label for="newComment"
-                      >Envie de commenter ce message, alors à vos claviers
+                      >Envie de commenter ce message ?<br />alors à vos claviers
                       !</label
                     >
                     <textarea
@@ -138,9 +152,26 @@
                     ></textarea>
                   </div>
                 </div>
-
-                <div class="col-3 px-auto my-auto">
-                  <div class="col-12 py-auto">
+                <div
+                  class="
+                    col-12 col-md-3
+                    justify-content-arround
+                    px-0
+                    my-auto
+                    mx-auto
+                    ml-md-0
+                    d-flex
+                    flex-md-column
+                  "
+                >
+                  <div
+                    class="
+                      col-6 col-md-12
+                      py-auto
+                      pb-2 pb-md-4
+                      flex-row flex-md-column
+                    "
+                  >
                     <button
                       type="submit"
                       @click.prevent="send()"
@@ -150,8 +181,7 @@
                       Valider
                     </button>
                   </div>
-                  <br />
-                  <div class="col-12 py-auto">
+                  <div class="col-6 col-md-12 py-auto">
                     <a
                       @click.prevent="refresh()"
                       class="btn btn-danger btn-block"
@@ -177,6 +207,7 @@
               Voici les commentaires associés au message {{ messageId }}
             </h1>
           </div>
+
           <div
             v-for="comment in comments"
             :key="comment"
@@ -186,10 +217,9 @@
               {{ comment.comment }}
             </div>
             <div
-              class="card-header bg-light m-0 p-1 row justify-content-around"
-              style="font-size: 12px"
+              class="card-header bg-light m-0 p1 createInfos d-flex flex-row"
             >
-              <div class="badge my-auto">
+              <div class="col-11 flex-wrap pl-0 ml-0">
                 Commentaire {{ comment.id }} rédigé par
                 {{
                   comment.User.userName.charAt(0).toUpperCase() +
@@ -211,7 +241,7 @@
                   @click="
                     deleteComment(comment.id, comment.UserId, currentUserId)
                   "
-                  class="border-0"
+                  class="col-1 border-0 bg-light pl-0"
                 >
                   <img
                     src="../assets/delete.jpg"

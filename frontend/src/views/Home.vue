@@ -170,7 +170,7 @@
                 }}
               </div>
             </div>
-            <div class="col-12 d-flex flex-column flex-sm-row" @click="commentPage(message.id)">
+            <div class="col-12 d-flex flex-column flex-md-row" @click="commentPage(message.id)">
               <div class="col-12 col-md-8 pl-0 pr-2 pr-md-2 py-auto my-auto truncated">
                 <span>{{ message.message }}</span>
               </div>
@@ -185,14 +185,14 @@
               </div>
             </div>
             <div class="row col-12 m-0 justify-content-around " style="font-size: 12px">
-              <button @click="commentPage(message.id)" class="font-weight-bold mb-2">
+              <button @click="commentPage(message.id)" class="font-weight-bold mb-2 bg-light">
                 voir la totalité du message ou les commentaires...<img
                   src="../assets/oeil.png"
                   alt="oeil"
                   style="width: 25px"
                 />
               </button>
-              <button @click="commentPage(message.id)" class="border-0 mb-2">
+              <button @click="commentPage(message.id)" class="border-0 mb-2 bg-light">
                 <img
                   src="../assets/comment.png"
                   alt="comment"
@@ -202,7 +202,7 @@
               <div v-if="isAdmin || message.UserId == id">
                 <button
                   @click="deleteMessage(message.id, message.UserId, id)"
-                  class="border-0"
+                  class="border-0 bg-light"
                 >
                   <img
                     src="../assets/delete.jpg"
