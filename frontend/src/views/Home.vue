@@ -10,7 +10,7 @@
             <div class="card-header col-12">
               <div class="row justify-content-around bg-white">
                 <p class="col-12 m-1 text-center">Bienvenue {{ nameCurrentUser }} !</p>
-                <p id="membre" class="text-center">
+                <p id="membre" class="col-12 m-1 text-center">
                   Vous êtes membre depuis le {{ creation }}
                 </p>
                 <button
@@ -28,7 +28,7 @@
                     <router-link v-if="isAdmin" to="/Admin"
                       ><button
                         type="button"
-                        class="btn btn-danger mx-auto rounded p-2 buttonsPanel"
+                        class="btn btn-danger mx-auto rounded p-md-2 p-0 buttonsPanel btnSupp"
                       >
                         Administration
                         <button class="rounded p-1 m-1">
@@ -48,8 +48,10 @@
                           btn btn-secondary
                           mx-auto
                           rounded
-                          p-2
+                          p-md-2
+                          p-0
                           buttonsPanel
+                          btnSupp
                         "
                       >
                         Suppression de compte
@@ -71,8 +73,8 @@
                 class="row d-flex justify-content-around font-weight-bold pt-1"
                 
               >
-                <div class="col-7 form-group m-0 p-0">
-                  <label for="newMessage"
+                <div class="col-12 col-md-7 form-group m-0 p-0">
+                  <label for="newMessage" class="p-1"
                     >{{ callName() }}, saississez votre message :</label
                   >
                   <textarea
@@ -86,13 +88,13 @@
                     style="font-size: 12px"
                   ></textarea>
                 </div>
-                <div class="col-4 my-auto">
-                  <div class="col-12 text-center my-auto">
-                    <img :src="newImage" class="rounded" style="width: 7rem" />
+                <div class="col-12 col-md-4 my-auto">
+                  <div class="col-12 text-center my-auto py-1">
+                    <img :src="newImage" class="rounded" style="width: 8rem" />
                   </div>
                 </div>
-                <div class="col-12 mx-auto d-flex align-items-center">
-                  <div class="col-3">
+                <div class="col-12 mx-auto d-flex align-items-center boutons">
+                  <div class="Publier mr-3">
                     <button
                       type="submit"
                       @click.prevent="send()"
@@ -102,17 +104,16 @@
                       Publier
                     </button>
                   </div>
-                  <div class="col-3">
+                  <div class="Annuler mr-3">
                     <a
-                      class="btn btn-danger btn-block m-1 p-1"
+                      class="btn btn-danger btn-block m-1 p-1 "
                       style="font-size: 12px"
                       @click="refresh"
                       >Annuler</a
                     >
                   </div>
                   <div
-                    class="col-6 justify-content-center"
-                    style="font-size: 12px"
+                    class="justify-content-center Upload mx-auto"
                   >
                     <input
                       @change="selectFile()"
@@ -131,7 +132,7 @@
           <div class="col-12">
             <h1
               v-if="this.messages.length !== 0"
-              class="col-12 my-2 btn btn-block btn-info font-weight-bold"
+              class="col-12 my-2 p-1 btn btn-block btn-info font-weight-bold"
               @click="refresh"
               style="background-color: #138400; cursor: default"
             >
@@ -139,7 +140,7 @@
             </h1>
             <h1
               v-else
-              class="col-12 my-2 btn btn-block btn-danger font-weight-bold"
+              class="col-12 my-2 p-1 btn btn-block btn-danger font-weight-bold"
               style="cursor: default"
             >
               Il n'existe pas encore de publication sur le site
@@ -150,8 +151,8 @@
             :key="message.id"
             class="card bg-light my-3"
           >
-            <div class="card-header bg-light m-0 p-1" style="font-size: 12px">
-              <div class="badge">
+            <div class="card-header bg-light flex-wrap m-0 p1 createInfos">
+              <div class="flex-wrap pl-0 ml-0">
                 Référence # {{ message.id }} postée par
                 {{
                   message.userName.charAt(0).toUpperCase() +
@@ -169,11 +170,11 @@
                 }}
               </div>
             </div>
-            <div class="col-12 d-flex" @click="commentPage(message.id)">
-              <div class="col-8 pr-2 py-auto my-auto truncated">
+            <div class="col-12 d-flex flex-column flex-sm-row" @click="commentPage(message.id)">
+              <div class="col-12 col-md-8 pl-0 pr-2 pr-md-2 py-auto my-auto truncated">
                 <span>{{ message.message }}</span>
               </div>
-              <div class="col-4 btn my-auto">
+              <div class="col-12 col-md-4 btn my-auto">
                 <img
                   :src="message.messageUrl"
                   v-if="message.messageUrl !== ''"
@@ -183,15 +184,15 @@
                 />
               </div>
             </div>
-            <div class="row justify-content-around " style="font-size: 12px">
-              <button @click="commentPage(message.id)" class="font-weight-bold border-0">
+            <div class="row col-12 m-0 justify-content-around " style="font-size: 12px">
+              <button @click="commentPage(message.id)" class="font-weight-bold mb-2">
                 voir la totalité du message ou les commentaires...<img
                   src="../assets/oeil.png"
                   alt="oeil"
                   style="width: 25px"
                 />
               </button>
-              <button @click="commentPage(message.id)" class="border-0">
+              <button @click="commentPage(message.id)" class="border-0 mb-2">
                 <img
                   src="../assets/comment.png"
                   alt="comment"
