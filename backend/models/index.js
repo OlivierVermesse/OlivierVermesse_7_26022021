@@ -9,7 +9,15 @@ const sequelize = new Sequelize(
     process.env.DB_PASS, {
     host: process.env.DB_HOST,
     dialect: process.env.DB_LANG,
-    port: process.env.DB_PORT
+    // port: process.env.DB_PORT
+    
+    port: process.env.DB_PORT,
+    dialectOptions : {
+        useUTC : false,
+    },
+    timezone: process.env.TIME_ZONE
+
+
 })
 
 //permet d'associer des modèles tout en conservant chaque modèle dans un fichier séparé
