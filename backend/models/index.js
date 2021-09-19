@@ -14,6 +14,8 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT,
     dialectOptions : {
         useUTC : false,
+        dateStrings: true,
+        typeCast: true,
     },
     timezone: process.env.TIME_ZONE
 
