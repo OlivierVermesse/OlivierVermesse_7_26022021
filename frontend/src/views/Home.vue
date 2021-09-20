@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-12 col-md-4 my-auto">
                   <div class="col-12 text-center my-auto py-1">
-                    <img :src="newImage" class="rounded" style="width: 8rem" />
+                    <img :src="newImage" alt="image de l'utilisateur" class="rounded" style="width: 8rem" />
                   </div>
                 </div>
                 <div class="col-12 mx-auto d-flex align-items-center boutons">
@@ -115,6 +115,7 @@
                   <div
                     class="justify-content-center Upload mx-auto"
                   >
+                  <label for="File">Choisir une photo</label>
                     <input
                       @change="selectFile()"
                       type="file"
