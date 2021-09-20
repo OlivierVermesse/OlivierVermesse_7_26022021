@@ -151,7 +151,7 @@
             :key="message.id"
             class="card bg-light my-3"
           >
-            <div class="card-header bg-light flex-wrap m-0 p1 createInfos">
+            <div class="card-header bg-light flex-wrap p1 createInfos mx-auto">
               <div class="flex-wrap pl-0 ml-0">
                 Référence # {{ message.id }} postée par
                 {{
@@ -184,7 +184,7 @@
                 />
               </div>
             </div>
-            <div class="row col-12 m-0 justify-content-around " style="font-size: 12px">
+            <div class="row col-12 m-0 justify-content-around mt-2" style="font-size: 12px">
               <button @click="commentPage(message.id)" class="font-weight-bold mb-2 bg-light">
                 voir la totalité du message ou les commentaires...<img
                   src="../assets/oeil.png"

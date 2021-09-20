@@ -217,7 +217,7 @@
               {{ comment.comment }}
             </div>
             <div
-              class="card-header bg-light m-0 p1 createInfos d-flex flex-row"
+              class="card-header bg-light p1 createInfos d-flex flex-row mx-auto"
             >
               <div class="col-11 flex-wrap pl-0 ml-0">
                 Commentaire {{ comment.id }} rédigé par
