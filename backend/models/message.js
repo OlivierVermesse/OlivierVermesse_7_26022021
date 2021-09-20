@@ -1,12 +1,17 @@
 const { Model } = require("sequelize");
 
-//voir pour option date courante lors de la creation ==> solution pb decalage heure
-
 module.exports = (sequelize, DataTypes) => {
     class Message extends Model { }
     Message.init({
         message: {
-            type: DataTypes.TEXT
+            type: DataTypes.TEXT,
+            required: true,
+            allowNull: false,
+            validate: {
+                notNull: { msg: "Le champ Message est obligatoire" },
+                notEmpty: { msg: "Le champ Message est obligatoire" },
+                len: [3, 1500],
+            },
         },
         messageUrl: {
             type: DataTypes.STRING

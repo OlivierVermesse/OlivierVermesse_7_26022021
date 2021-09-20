@@ -345,6 +345,7 @@ export default {
         !this.newComment ||
         !localStorage.getItem("userId") ||
         !localStorage.getItem("MessageId" || this.newComment.lemgth > 1500)
+        
       ) {
         this.isInvalid = true;
       } else {

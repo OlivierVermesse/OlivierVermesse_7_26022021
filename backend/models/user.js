@@ -5,20 +5,43 @@ module.exports = (sequelize, DataTypes) => {
     User.init({
         lastName: {
             type: DataTypes.STRING,
-            allowNull: false
+            required: true,
+            allowNull: false,
+            validate: {
+                notNull: { msg: "Le champ lastName est obligatoire" },
+                notEmpty: { msg: "Le champ lastName est obligatoire" },
+                len: [3],
+            },
         },
         userName: {
             type: DataTypes.STRING,
-            allowNull: false
+            required: true,
+            allowNull: false,
+            validate: {
+                notNull: { msg: "Le champ userName est obligatoire" },
+                notEmpty: { msg: "Le champ userName est obligatoire" },
+                len: [3],
+            },
         },
         email: {
             type: DataTypes.STRING,
             unique: true,
-            allowNull: false
+            required: true,
+            allowNull: false,
+            isEmail: true,
+            validate: {
+                notNull: { msg: "Le champ Email est obligatoire" },
+                notEmpty: { msg: "Le champ Email est obligatoire" },
+            },
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
+            required: true,
+            allowNull: false,
+            validate: {
+                notNull: { msg: "Le champ password est obligatoire" },
+                notEmpty: { msg: "Le champ password est obligatoire" },
+            },
         },
         isAdmin: {
             type: DataTypes.BOOLEAN,
