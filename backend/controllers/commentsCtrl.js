@@ -25,7 +25,7 @@ exports.findAllComment = (req, res, next) => {
             required: true,
             attributes: ["userName"]
         },
-        order: [["id", "DESC"]]
+        order: [["updatedAt", "DESC"]]
     })
         .then(comment => { res.status(200).json(comment) })
         .catch(error => res.status(404).json({ error }))

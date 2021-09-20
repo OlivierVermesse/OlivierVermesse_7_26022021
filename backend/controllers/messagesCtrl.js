@@ -31,7 +31,7 @@ exports.findOneMessage = (req, res, next) => {
             required: true,
             attributes: ["userName"]
         },
-        order: [["id", "DESC"]]
+        order: [["updatedAt", "DESC"]]
 
     })
         .then(message => {
@@ -50,7 +50,7 @@ exports.findAllMessages = (req, res, next) => {
     Message.findAll({
         include: { model: User, required: true, attributes: ["userName"] },
 
-        order: [["id", "DESC"]],
+        order: [["updatedAt", "DESC"]],
     })
         .then(messages => {
             const list = messages.map(message => {
