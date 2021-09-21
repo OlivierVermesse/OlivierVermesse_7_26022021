@@ -90,22 +90,22 @@
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge p-3 badgeList" v-for="i in users" :key="i">   
+                                    <span class="badge p-3 badgeList col-12" v-for="i in users" :key="i">   
                                          {{ i.lastName.charAt(0).toUpperCase() + i.lastName.slice(1) }}  
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge p-3 badgeList" v-for="i in users" :key="i">   
+                                    <span class="badge p-3 badgeList col-12" v-for="i in users" :key="i">   
                                          {{ i.userName.charAt(0).toUpperCase() + i.userName.slice(1) }} 
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge p-3 badgeList" v-for="i in users" :key="i">   
+                                    <span class="badge p-3 badgeList col-12" v-for="i in users" :key="i">   
                                          {{ i.email }}
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge p-3 badgeList" v-for="i in users" :key="i">   
+                                    <span class="badge p-3 badgeList col-12"  v-for="i in users" :key="i">   
                                         {{ i.createdAt.slice(0,10).split("-").reverse().join(".")}}
                                     </span>
                                 </td>
